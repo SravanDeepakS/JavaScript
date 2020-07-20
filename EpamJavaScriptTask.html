@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title>Registration Page</title>
+		<style>
+			body{
+				background-color:lightblue;
+				color:green;
+			}
+		</style>
+		<script>
+			function checkName()
+			{
+				var x=document.getElementById("name");
+				if(x.value==="")
+				{
+					alert("Name field is empty");
+					return 1;
+				}
+				return 0;
+			}
+			function validateEmail()
+			{
+				var x=document.getElementById("email").value;
+				var len=x.length;
+				var y="@gmail.com";
+				var len1=y.length;
+				var z=len-len1;
+				if(z<=0 || y.localeCompare(x.substring(z,len))!=0)
+				{
+					alert("Invalid email");
+					return 1;
+				}
+				return 0;
+			}
+			function validateMobile()
+			{
+				var x=document.getElementById("mobile").value;
+				var len=x.length;
+				if(len!=10)
+				{
+					alert("Invalid mobile number");
+					return 1;
+				}
+				return 0;
+			}
+			function validatePassword()
+			{
+				var x=document.getElementById("password").value;
+				var regex= /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
+				if(!regex.test(x))
+				{
+					alert("Password must be atleast 8 characters and it must have uppercase,lowercase and digits");
+					return 1;
+				}
+				return 0;
+			}
+			function validateCPassword()
+			{
+				var x=document.getElementById("password").value;
+				var y=document.getElementById("cpassword").value;
+				if(x!=y)
+				{
+					alert("Password mismatch");
+					return 1;
+				}
+				return 0;
+			}
+			function validate()
+			{
+				if(checkName() || validateEmail() || validateMobile() || validatePassword() || validateCPassword()){}
+				else
+					document.write("Registration successful");
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+			<h1>Register for Sravan Tech</h1>
+			<form>
+				Name:<input type="text" id="name" placeholder="Name"/><br><br>
+				Email:<input type="text" id="email" placeholder="xyz@gmail.com" /><br><br>
+				Mobile Number:<input type="text" id="mobile" placeholder="mobile number"/><br><br>
+				Password:<input type="password" id="password" placeholder="enter password"/><br><br>
+				Confirm Password:<input type="password" id="cpassword" placeholder="re-enter password"/><br><br>
+				<input type="button" value="Submit" onclick="validate()"/>
+			</form>
+		</center>
+	</body>
+</html>
